@@ -1,0 +1,27 @@
+name: car-collection-manager
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    ports:
+      - ${PORT}:8080
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    env_file: .env
+
+volumes:
+  mongo_data:
