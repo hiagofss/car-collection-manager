@@ -1,9 +1,9 @@
 # Configuration file for air
-root = "./src"
+root = "./"
 tmp_dir = "tmp"
 
 [build]
-cmd = "go build -o tmp/main ./src"
+cmd = "go build -o tmp/main ./"
 bin = "tmp/main"
 include_ext = ["go"]
 exclude_dir = ["vendor", "tmp", "node_modules"]

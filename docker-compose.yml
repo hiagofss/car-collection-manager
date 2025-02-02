@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile.local
     ports:
-      - ${PORT}
+      - ${PORT}:${PORT}
     volumes:
       - ./:/app
     env_file:
@@ -15,7 +15,7 @@ services:
       - mongodb
     healthcheck:
       test: 'wget --spider -q http://localhost:${PORT}/health || exit 1'
-      interval: 5s
+      interval: 180s
       timeout: 30s
       retries: 5
       start_period: 30s
