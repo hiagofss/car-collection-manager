@@ -1,0 +1,117 @@
+definitions:
+  dto.CarRequest:
+    properties:
+      barCode:
+        type: string
+      category:
+        type: string
+      code:
+        type: string
+      collection:
+        type: string
+      description:
+        type: string
+      manufacturer:
+        type: string
+      name:
+        type: string
+      year:
+        type: string
+    type: object
+  dto.CarResponse:
+    properties:
+      barCode:
+        type: string
+      category:
+        type: string
+      code:
+        type: string
+      collection:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      manufacturer:
+        type: string
+      name:
+        type: string
+      year:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /car:
+    get:
+      consumes:
+      - application/json
+      description: Desc
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.CarResponse'
+            type: array
+      summary: List Car's resource
+      tags:
+      - car
+    post:
+      consumes:
+      - application/json
+      description: Desc
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CarRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CarResponse'
+      summary: Insert new Car resource
+      tags:
+      - car
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Get health status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Healthcheck resource
+      tags:
+      - app
+  /ping:
+    get:
+      consumes:
+      - application/json
+      description: Get pong response
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Ping Pong resource
+      tags:
+      - app
+swagger: "2.0"

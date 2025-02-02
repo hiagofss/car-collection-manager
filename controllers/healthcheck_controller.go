@@ -8,10 +8,10 @@ import (
 
 // @Summary Healthcheck resource
 // @Description Get health status
-// @Tags example
+// @Tags app
 // @Accept json
 // @Produce json
-// @Success 200 {object}
+// @Success 200 {object} map[string]string
 // @Router /health [get]
 func Health(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
@@ -22,7 +22,7 @@ func Health(ctx *gin.Context) {
 
 // @Summary Ping Pong resource
 // @Description Get pong response
-// @Tags example
+// @Tags app
 // @Accept json
 // @Produce json
 // @Success 200 {object} map[string]string

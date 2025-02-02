@@ -48,6 +48,7 @@ func SetupRouter(router *gin.Engine) {
 
 	HealthRouter(router)
 	AdminRouter(router)
+	CarRouter(router)
 	UserRouter(router)
 
 	router.Run(":" + utils.GetEnvOrDefault("PORT", "8080"))
@@ -56,6 +57,11 @@ func SetupRouter(router *gin.Engine) {
 func HealthRouter(router *gin.Engine) {
 	router.GET("/health", controllers.Health)
 	router.GET("/ping", controllers.PingPongHandler)
+}
+
+func CarRouter(router *gin.Engine) {
+	router.GET("/car", controllers.GetCar)
+	router.POST("/car", controllers.PostCar)
 }
 
 func AdminRouter(router *gin.Engine) {
