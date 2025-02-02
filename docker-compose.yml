@@ -6,13 +6,19 @@ services:
       context: .
       dockerfile: Dockerfile.local
     ports:
-      - ${PORT}:8080
+      - ${PORT}
     volumes:
       - ./:/app
     env_file:
       - .env
     depends_on:
       - mongodb
+    healthcheck:
+      test: 'wget --spider -q http://localhost:${PORT}/health || exit 1'
+      interval: 5s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
   mongodb:
     container_name: mongodb
     image: mongo:latest
